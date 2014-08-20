@@ -16,7 +16,7 @@ function Paddle(ball){
 
   this.hitTheBall = function(){
     if (this.intersect(this.ball)){
-      this.ball.xVelocity *= -1
+      this.ball.hit(this.yVelocity)
     }
   }
 }
@@ -57,7 +57,7 @@ function Bot(ball){
   Paddle.call(this, ball)
 
   this.x = game.width - this.width - 10
-  this.speed = 4
+  this.speed = 5
 
   this.move = function() {
     if (this.y < ball.y){

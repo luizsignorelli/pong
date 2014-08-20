@@ -32,7 +32,9 @@ Game.keys = {
   37: 'left',
   38: 'up',
   39: 'right',
-  40: 'down'
+  40: 'down',
+  65: 'a',
+  90: 'z'
 }
 
 // Game.prototype.start = function() {
@@ -64,7 +66,7 @@ Game.prototype.draw = function() {
 Game.prototype.start = function() {
   var self = this
   this.lastUpdateTime = new Date().getTime()
-  
+
   onFrame(function() {
     self.fixedTimeStep()
   })
