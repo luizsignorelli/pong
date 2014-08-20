@@ -23,6 +23,16 @@ Ball.prototype.update = function () {
     this.yVelocity *= -1
   }
 
-  if ( this.x < 0 || this.x > game.width ) this.reset()
+  // Off screen on right. Player wins.
+  if (this.x > game.width) {
+    player1.score += 1
+    this.reset()
+  }
+
+  // Off screen on left. Bot wins.
+  if (this.x < -this.width) {
+    player2.score += 1
+    this.reset()
+  }
 
 }

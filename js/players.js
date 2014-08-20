@@ -6,6 +6,8 @@ function Paddle(ball){
   this.width = 20
   this.height = 100
 
+  this.score = 0
+
   this.y = game.height / 2 - this.height / 2
 
   this.ensureThePlayerIsInsideTheCanvas = function() {
@@ -22,6 +24,8 @@ Paddle.prototype = Object.create(Entity.prototype)
 Paddle.prototype.constructor = Paddle
 
 Paddle.prototype.update = function() {
+  this.move()
+
   Entity.prototype.update.apply(this, arguments)
 
   this.ensureThePlayerIsInsideTheCanvas()
@@ -48,10 +52,6 @@ function Player(ball){
 Player.prototype = Object.create(Paddle.prototype)
 Player.prototype.constructor = Player
 
-Player.prototype.update = function() {
-  this.move()
-  Paddle.prototype.update.apply(this, arguments)
-}
 
 function Bot(ball){
   Paddle.call(this, ball)
@@ -69,8 +69,3 @@ function Bot(ball){
 }
 Bot.prototype = Object.create(Paddle.prototype)
 Bot.prototype.constructor = Bot
-
-Bot.prototype.update = function(){
-  this.move()
-  Paddle.prototype.update.apply(this, arguments)
-}
