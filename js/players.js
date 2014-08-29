@@ -52,6 +52,27 @@ function Player(ball){
 Player.prototype = Object.create(Paddle.prototype)
 Player.prototype.constructor = Player
 
+function Player2(ball){
+  Paddle.call(this, ball)
+
+  this.x = game.width - this.width - 10
+
+  this.speed = 10
+
+  this.move = function() {
+    if (game.keyPressed.a){
+      this.yVelocity = -this.speed
+    } else if (game.keyPressed.z){
+      this.yVelocity = this.speed
+    } else {
+      this.yVelocity = 0
+    }
+  }
+}
+Player2.prototype = Object.create(Paddle.prototype)
+Player2.prototype.constructor = Player2
+
+
 
 function Bot(ball){
   Paddle.call(this, ball)

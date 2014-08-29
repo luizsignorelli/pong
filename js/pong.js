@@ -10,10 +10,23 @@ Background.prototype.draw = function(context) {
 }
 
 var game = new Game($('canvas')[0])
+
+ball = new Ball()
+player1 = new Player(ball)
+player2 = $("#mode").val() === "1p" ? new Bot(ball) : new Player2(ball)
+
 game.entities = [
   new Background(),
-  ball = new Ball(),
-  player1 = new Player(ball),
-  player2 = new Bot(ball)]
-game.start()
-$('canvas')[0].focus()
+  ball,
+  player1,
+  player2
+  ]
+game.draw()
+
+
+$(function(){
+  $("#start").on("click", function(){
+    game.start()
+    $('canvas')[0].focus()
+  })
+})
