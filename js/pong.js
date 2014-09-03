@@ -9,24 +9,34 @@ Background.prototype.draw = function(context) {
   context.fillText(player2.score, game.width * 5 / 8, 50)
 }
 
-var game = new Game($('canvas')[0])
+function restart(){
+  ball = new Ball()
+  player1 = new Player(ball)
+  player2 = $("#mode").val() === "1p" ? new Bot(ball) : new Player2(ball)
 
-ball = new Ball()
-player1 = new Player(ball)
-player2 = $("#mode").val() === "1p" ? new Bot(ball) : new Player2(ball)
-
-game.entities = [
-  new Background(),
-  ball,
-  player1,
-  player2
+  game.entities = [
+    new Background(),
+    ball,
+    player1,
+    player2
   ]
+}
+
+var game = new Game($('canvas')[0])
+restart()
 game.draw()
 
 
 $(function(){
   $("#start").on("click", function(){
     game.start()
+    $("#start").hide()
+    $("#restart").show()
+    $('canvas')[0].focus()
+  })
+
+  $("#restart").on("click", function(){
+    restart()
     $('canvas')[0].focus()
   })
 })
