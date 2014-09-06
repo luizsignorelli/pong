@@ -1,0 +1,22 @@
+{
+  "name": "phaser-pong",
+  "version": "0.1.0",
+  "description": "pong game using phaser.js",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.4.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luizsignorelli/pong.git"
+  },
+  "keywords": [
+    "pong", "game", "phaser.js"
+  ],
+  "author": "Luiz Signorelli",
+  "license": "MIT",
+  "homepage": "https://github.com/luizsignorelli/pong/phaser",
+  "engines": {
+    "node": "0.10.28"
+  }
+}

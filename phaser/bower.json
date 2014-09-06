@@ -1,0 +1,25 @@
+{
+  "name": "phaser-pong",
+  "version": "0.1.0",
+  "homepage": "https://github.com/luizsignorelli/pong/phaser",
+  "authors": [
+    "Luiz Signorelli <luiz.sg@gmail.com>"
+  ],
+  "description": "pong game using phaser.js",
+  "main": "server.js",
+  "keywords": [
+    "pong", "game", "phaser.js"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser-official": "~2.0.7"
+  }
+}
