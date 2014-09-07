@@ -18,6 +18,7 @@ Pong.prototype.create = function(){
   return function() {
     self.ball = new Ball(self.game)
     self.player1 = new Player(self.game, self.goalMargin, self.game.world.centerY)
+    self.player2 = new Bot(self.game, self.ball, self.game.world.width - self.goalMargin, self.game.world.centerY)
   }
 }
 
@@ -25,7 +26,19 @@ Pong.prototype.update = function(){
   var self = this
   return function() {
     self.player1.update()
+    self.player2.update()
     self.game.physics.arcade.collide(self.ball.ball, self.player1.paddle, ballHitsBet, null, self)
+    self.game.physics.arcade.collide(self.ball.ball, self.player2.paddle, ballHitsBet, null, self)
+
+    self.checkGoal()
+  }
+}
+
+Pong.prototype.checkGoal = function() {
+  if (this.ball.ball.x < this.goalMargin) {
+    this.ball.reset();
+  } else if (this.ball.ball.x > this.game.world.width - this.goalMargin) {
+    this.ball.reset();
   }
 }
 
@@ -44,5 +57,5 @@ function ballHitsBet (_ball, _bet) {
       //The ball hit the center of the racket, let's add a little bit of a tragic accident(random) of his movement
       _ball.body.velocity.y = 2 + Math.random() * 8;
   }
-  _ball.body.velocity.y += _bet.body.velocity.y / 3
+  _ball.body.velocity.y += _bet.body.velocity.y
 }

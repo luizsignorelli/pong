@@ -25,3 +25,14 @@ Ball.prototype.releaseBall = function() {
     }
   }
 }
+
+Ball.prototype.reset = function() {
+  if (this.ballReleased) {
+  //  updateScore()
+    this.ball.x = this.game.world.centerX;
+    this.ball.y = this.game.world.centerY;
+    this.ball.body.velocity.y = 0;
+    this.ball.body.velocity.x = 0;
+    this.ballReleased = false;
+  }
+}
