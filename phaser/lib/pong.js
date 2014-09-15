@@ -36,9 +36,11 @@ Pong.prototype.update = function(){
 
 Pong.prototype.checkGoal = function() {
   if (this.ball.ball.x < this.goalMargin) {
-    this.ball.reset();
+    this.ball.reset()
+    this.player2.incrementScore()
   } else if (this.ball.ball.x > this.game.world.width - this.goalMargin) {
     this.ball.reset();
+    this.player1.incrementScore()
   }
 }
 

@@ -9,6 +9,8 @@ function Bot(game, ball, x, y){
   this.paddle.body.collideWorldBounds = true
   this.paddle.body.bounce.setTo(1, 1)
   this.paddle.body.immovable = true
+
+  this.score = game.add.text(game.world.width * 5 / 8, 50, '0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 }
 
 Bot.prototype.update = function(){
@@ -20,4 +22,8 @@ Bot.prototype.update = function(){
   } else {
       this.paddle.body.velocity.y = 0;
   }
+}
+
+Bot.prototype.incrementScore = function(){
+  this.score.text = +(this.score.text) + 1;
 }

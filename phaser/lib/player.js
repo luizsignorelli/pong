@@ -15,6 +15,8 @@ function Player(game, x, y){
   cursors.down.onDown.add(this.paddleDown(), this.game)
   cursors.up.onUp.add(this.stopPaddle(), this.game)
   cursors.down.onUp.add(this.stopPaddle(), this.game)
+
+  this.score = game.add.text(game.world.width * 3 / 8, 50, '0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 }
 
 Player.prototype.paddleUp = function() {
@@ -55,4 +57,8 @@ Player.prototype.update = function(){
   } else if (this.paddle.y > this.game.height - playerBetHalfWidth) {
       this.paddle.y = this.game.height - playerBetHalfWidth
   }
+}
+
+Player.prototype.incrementScore = function(){
+  this.score.text = +(this.score.text) + 1;
 }
