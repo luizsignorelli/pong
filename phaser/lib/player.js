@@ -1,14 +1,7 @@
 function Player(game, x, y){
-  this.game = game
+  Paddle.call(this, game, x, y)
   this.movePaddleUp = false
   this.movePaddleDown = false
-
-  this.paddle = game.add.sprite(x, y, 'paddle')
-  game.physics.enable(this.paddle, Phaser.Physics.ARCADE)
-  this.paddle.anchor.setTo(0.5, 0.5)
-  this.paddle.body.collideWorldBounds = true
-  this.paddle.body.bounce.setTo(1, 1)
-  this.paddle.body.immovable = true
 
   cursors = this.game.input.keyboard.createCursorKeys()
   cursors.up.onDown.add(this.paddleUp(), this.game)
@@ -18,6 +11,9 @@ function Player(game, x, y){
 
   this.score = game.add.text(game.world.width * 3 / 8, 50, '0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 }
+Player.prototype = Object.create(Paddle.prototype)
+Player.prototype.constructor = Player
+
 
 Player.prototype.paddleUp = function() {
   var self = this;
@@ -57,8 +53,4 @@ Player.prototype.update = function(){
   } else if (this.paddle.y > this.game.height - playerBetHalfWidth) {
       this.paddle.y = this.game.height - playerBetHalfWidth
   }
-}
-
-Player.prototype.incrementScore = function(){
-  this.score.text = +(this.score.text) + 1;
 }
